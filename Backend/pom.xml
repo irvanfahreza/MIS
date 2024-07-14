@@ -7,9 +7,6 @@
   <packaging>pom</packaging>
   <name>id.go.MIS.noncore</name>
   <modules>
-    <module>ihc</module>
     <module>inspired</module>
-    <module>bcm</module>
-    <module>quickcount</module>
   </modules>
 </project>
