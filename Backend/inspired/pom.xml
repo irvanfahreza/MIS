@@ -8,11 +8,11 @@
 		<version>3.0.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>id.go.bpjskesehatan</groupId>
+	<groupId>id.go.MIS</groupId>
 	<artifactId>MIS</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>inspired</name>
+	<name>MIS</name>
 	<description>Aplikasi MIS</description>
 	<properties>
 		<java.version>17</java.version>
@@ -58,6 +58,11 @@
 			<groupId>org.eclipse.persistence</groupId>
 			<artifactId>javax.persistence</artifactId>
 			<version>2.1.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>servlet-api</artifactId>
+		    <version>2.5</version>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish.jersey.media</groupId>
@@ -134,8 +139,8 @@
 			<version>5.2.3</version>
 		</dependency>
         
-        <dependency>
-			<groupId>id.go.bpjskesehatan</groupId>
+        <!-- <dependency>
+			<groupId>id.go.MIS</groupId>
 			<artifactId>ihc</artifactId>
 			<version>1.0-SNAPSHOT</version>
 			<classifier>classes</classifier>
@@ -145,7 +150,7 @@
 					<artifactId>jersey-media-multipart</artifactId>
 				</exclusion>
 			</exclusions>
-        </dependency>
+        </dependency> -->
 	</dependencies>
 
 	<build>

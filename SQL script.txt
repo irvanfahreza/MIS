@@ -1,0 +1,22 @@
+1. Buat Database Aplikasi
+
+CREATE DATABASE MIS;
+CREATE TABLE klaim _lob (
+  id INT IDENTITY(1,1) PRIMARY KEY,
+  lob VARCHAR(50),
+  penyebab_klaim VARCHAR(255),
+  jumlah_nasabah FLOAT,
+  nilai_beban_klaim DECIMAL(10, 2)
+);
+
+2. Buat Database Penampungan
+CREATE DATABASE MIS_rekap;
+CREATE TABLE rekap_klaim_lob (
+  id INT IDENTITY(1,1) PRIMARY KEY,
+  lob VARCHAR(50),
+  penyebab_klaim VARCHAR(255),
+  jumlah_nasabah FLOAT,
+  nilai_beban_klaim DECIMAL(10, 2)
+);
+
+
