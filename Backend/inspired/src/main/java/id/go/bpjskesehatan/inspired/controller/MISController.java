@@ -2,6 +2,7 @@ package id.go.bpjskesehatan.inspired.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.naming.NamingException;
 
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import id.go.bpjskesehatan.inspired.config.Constant;
+import id.go.bpjskesehatan.inspired.model.klaim_lob;
 import id.go.bpjskesehatan.inspired.service.MISService;
 import id.go.bpjskesehatan.inspired.util.Result;
 import id.go.bpjskesehatan.inspired.util.SharedMethod;
@@ -35,6 +37,17 @@ public class MISController {
 		} catch (Exception e) {
 	    	return SharedMethod.getResponse(HttpStatus.BAD_REQUEST, e.getMessage());
 	    }
+	}
+	
+	@GetMapping("list")
+	public @ResponseBody ResponseEntity<Result<klaim_lob>> listLOB(
+			){
+		try {
+			List<klaim_lob> list = service.listLOB();
+			return SharedMethod.getResponse(HttpStatus.OK, Constant.STATUS_SUCCESS_MSG, list);
+		} catch (Exception e) {
+        	return SharedMethod.getResponse(HttpStatus.BAD_REQUEST, e.getMessage(), null);
+        }
 	}
 	
     @GetMapping("export/excel")

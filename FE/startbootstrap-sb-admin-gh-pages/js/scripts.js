@@ -9,13 +9,8 @@
 
 window.addEventListener('DOMContentLoaded', event => {
 
-    // Toggle the side navigation
     const sidebarToggle = document.body.querySelector('#sidebarToggle');
     if (sidebarToggle) {
-        // Uncomment Below to persist sidebar toggle between refreshes
-        // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
-        //     document.body.classList.toggle('sb-sidenav-toggled');
-        // }
         sidebarToggle.addEventListener('click', event => {
             event.preventDefault();
             document.body.classList.toggle('sb-sidenav-toggled');
@@ -24,3 +19,70 @@ window.addEventListener('DOMContentLoaded', event => {
     }
 
 });
+
+
+window.addEventListener('DOMContentLoaded', function() {
+    const tableBody = document.getElementById('tableBody');
+    const rekapDataButton = document.getElementById('rekapDataButton');
+    if (!tableBody) {
+        return;
+    }
+
+    function fetchData() {
+        axios.get('http://localhost:8080/inspired/api/list')
+            .then(response => {
+                const data = response.data.response.list;
+                populateTable(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
+    function rekapData() {
+        axios.post('http://localhost:8080/inspired/api/rekap', {
+            })
+            .then(response => {
+                console.log(response);
+                showSuccessMessage();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
+    function showSuccessMessage() {
+        alert('Data berhasil di rekap!');
+    }
+
+    function populateTable(data) {
+        tableBody.innerHTML = '';
+
+        if (Array.isArray(data)) {
+            data.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.lob}</td>
+                    <td>${item.penyebab_klaim}</td>
+                    <td>${item.jumlah_nasabah}</td>
+                    <td>${item.beban_klaim}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+
+            const datatablesSimple = document.getElementById('datatablesSimple');
+            if (datatablesSimple) {
+                new simpleDatatables.DataTable(datatablesSimple);
+            }
+        } else {
+        }
+    }
+
+    rekapDataButton.addEventListener('click', function() {
+        rekapData();
+    });
+
+    fetchData();
+});
+
+
